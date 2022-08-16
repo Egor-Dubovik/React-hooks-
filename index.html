@@ -3,21 +3,134 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-		<title>reveal.js</title>
-
+		<title>React hooks</title>
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
 		<link rel="stylesheet" href="dist/theme/black.css">
-
-		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+        <section>
+          <section data-background-image="./images/start-bg.jpg"></section>
+          <section><h2>React hooks</h2></section>
+          <section>
+            <h2>Why are React Hooks needed?</h2>
+            <ul>
+              <li>simplifying expected behavior</li>
+              <li>increasing extensibility</li>
+              <li>improving performance</li>
+            </ul>
+          </section>
+          <section>
+            <h2>hooks wich we're talking about:</h2>
+            <p>useState, useRef, useEffect, useMemo</p>
+          </section>
+        </section>
+
+				<section>
+          <section>
+            <b>useState(initialState)</b>
+            <p>Returns a stateful value, and a function to update it.</p>
+          </section>
+          <section>
+            <p>
+              We don't change the state of the component directly, we call the set function, where we pass the value of the component. 
+            </p>
+            <pre>
+              <code data-trim data-noescape>
+                const [state, setState] = useState(initialState);
+              </code>
+            </pre>
+          </section>
+        </section>  
+
+        <section>
+            <section>
+              <p>
+                <b>useRef</b> manages the DOM tree directly and returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). 
+              </p>
+              <pre>
+                <code data-trim data-noescape>
+                  const someElement = useRef(initialValue);
+                </code>
+              </pre>
+            </section>
+            <section>
+              <p>let's see the code!</p> 
+            </section>
+        </section>
+        
+        <section>
+          <section>
+            <b>useEffect(callback, deps)</b>
+            <p>Tracks the stages of the life cycle.</p>
+          </section>
+          <section>
+            <h3>
+              life cycle
+            </h3>
+            <ul>
+              <li><b>mount</b> (creating and mounting a component in a DOM tree)  </li>
+              <li><b>update</b> (see and use a component)</li>
+              <li><b>unmount</b> (when the component is not needed it is removed)</li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>performs the first display during the <u>mount stage</u></li>
+              <li>Keeps track of the change in the state of the array elements and calls the code when the change occurs - <u>update stage</u></li>
+              <li>For example when we go to another page and React removes a component - <u>unmount stage</u></li>
+            </ul>
+          </section>
+          <section>
+            <p>let's see the code!</p> 
+          </section>
+        </section> 
+
+        <section>
+          <section>
+            <b>useMemo(callback, deps)</b>
+            <p>Callback must return the result of some calculations (for example, a sorted array)</p>
+          </section>
+          <section>
+            <pre>
+              <code data-trim data-noescape>
+                useMemo(() => {
+                  return [...users].sort(...)
+                }, [selectedSort, users])
+              </code>
+            </pre>
+            <p>callback will only be called if any of the dependencies change their value</p>
+          </section>
+          <section>
+            <p>code time!</p> 
+          </section>
+        </section> 
+
+        <section>
+          <section>
+            <h2>SO WHY ARE REACTIVE HOOKS USEFUL?</h2>
+          </section>
+          <section>
+            <ul>
+              <li>
+                React hooks reduce the number of components in the tree, significantly, making it easier to get a handle on the layout of the component tree and debugging
+              </li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Also they allow more capabilities to implement native JavaScript instead of adding more framework-specific abstractions.
+              </li>
+            </ul>
+          </section>
+          <section>
+            the end.
+          </section>
+        </section> 
 			</div>
 		</div>
 
@@ -26,13 +139,11 @@
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
+
 			Reveal.initialize({
 				hash: true,
-
-				// Learn about plugins: https://revealjs.com/plugins/
+        mouseWheel: true,
+        slideNumber: true,
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
